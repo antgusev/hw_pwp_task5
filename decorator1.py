@@ -12,9 +12,9 @@ def logger(old_function):
         result = old_function(*args, **kwargs)
         result_log = f'Дата/время: {start}', f'Имя функции: {old_function.__name__}', f'Аргументы: {args} и {kwargs}', f'Результат: {result}'
         
-        if __name__ == '__main__':
-            with open ('main.log', 'a', encoding='cp1251') as file:
-                json.dump(result_log, file, ensure_ascii=False)
+        with open ('main.log', 'a', encoding='utf-8') as file:
+            for line in result_log:
+                file.write(line + '\n')
 
         return result
 
